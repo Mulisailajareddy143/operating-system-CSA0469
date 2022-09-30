@@ -1,0 +1,31 @@
+Xen:
+Xen is a type 1 hypervisor that creates logical pools of system resources so that many virtual machines can share the same physical resources.
+Xen is a hypervisor that runs directly on the system hardware. Xen inserts a virtualization layer between the system hardware and the virtual machines, turning the system hardware into a pool of logical computing resources that Xen can dynamically allocate to any guest operating system. The operating systems running in virtual machines interact with the virtual resources as if they were physical resources.
+Figure 1 shows a system with Xen running virtual machines.
+Figure 1. The Xen architecture
+ 
+Xen is running three virtual machines. Each virtual machine is running a guest operating system and applications independent of other virtual machines while sharing the same physical resources.
+Features
+The following are key concepts of the Xen architecture:
+•	Full virtualization.
+•	Xen can run multiple guest OS, each in its on VM.
+•	Instead of a driver, lots of great stuff happens in the Xen daemon, xend.
+Full virtualization
+Most hypervisors are based on full virtualization which means that they completely emulate all hardware devices to the virtual machines. Guest operating systems do not require any modification and behave as if they each have exclusive access to the entire system.
+Full virtualization often includes performance drawbacks because complete emulation usually demands more processing resources (and more overhead) from the hypervisor. Xen is based on paravirtualization; it requires that the guest operating systems be modified to support the Xen operating environment. However, the user space applications and libraries do not require modification.
+Operating system modifications are necessary for reasons like:
+•	So that Xen can replace the operating system as the most privileged software.
+•	So that Xen can use more efficient interfaces (such as virtual block devices and virtual network interfaces) to emulate devices — this increases performance.
+Xen can run multiple guest OS each in its on VM
+Xen can run several guest operating systems each running in its own virtual machine or domain. When Xen is first installed, it automatically creates the first domain, Domain 0 (or dom0).
+Domain 0 is the management domain and is responsible for managing the system. It performs tasks like building additional domains (or virtual machines), managing the virtual devices for each virtual machine, suspending virtual machines, resuming virtual machines, and migrating virtual machines. Domain 0 runs a guest operating system and is responsible for the hardware devices.
+Deploying virtualization
+To deploy virtualization for Xen:
+•	Install Xen on the system.
+•	Create and configure virtual machines (this includes the guest operating system).
+Install the Xen software using one of the following methods:
+•	Interactive install: Use this procedure to install directly on dedicated virtual machine on the Xen server. This dedicated virtual machine is referred to as the client computer in the install procedure.
+•	Install from CommCell console: Use this procedure to install remotely on a dedicated virtual machine on the Xen server.
+VMware:
+VMware is a virtualization and cloud computing software provider based in Palo Alto, Calif. Founded in 1998, VMware is a subsidiary of Dell Technologies. EMC Corporation originally acquired VMware in 2004; 
+
